@@ -3,9 +3,10 @@ version: '3.9'
 services:
 
   nginx:
-    build:
-       ./nginx
+    build: ./nginx
     container_name: nginxv1
+
+    restart: always
 
     ports:
       - "80:80"
@@ -13,9 +14,12 @@ services:
     depends_on:
       - flask_sql
 
+
   flask_sql:
     build: .
     container_name: flask_sql
+
+    restart: always
 
     ports:
       - "1601:1601"
@@ -33,7 +37,7 @@ services:
 
 
   mysql_db:
-    image: mysql:latest
+    image: mysql:8
     container_name: mysql_db
 
     restart: always
@@ -56,5 +60,23 @@ services:
       retries: 5
       start_period: 60s
 
+
+  jenkins:
+    image: jenkins/jenkins:lts
+
+    container_name: jenkins
+
+    restart: always
+
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+
+
 volumes:
   mysql_data:
+  jenkins_home:
