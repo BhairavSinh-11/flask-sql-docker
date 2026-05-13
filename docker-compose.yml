@@ -5,8 +5,7 @@ services:
 #NGINX SERVICE
 
   nginx:
-    build:
-       ./nginx
+    build: ./nginx
     container_name: nginxv1
 
     ports:
