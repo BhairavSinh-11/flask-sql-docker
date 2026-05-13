@@ -10,7 +10,7 @@ services:
       - "80:80"
 
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/flask_sql.conf
+      ./nginx/flask_sql.conf:/etc/nginx/conf.d/flask_sql.conf
 
     depends_on:
       - flask_sql
