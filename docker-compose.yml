@@ -11,9 +11,9 @@ services:
   environment:
     MYSQL_HOST: mysql-db
     MYSQL_USER: root
-    MYSQL_PASSWORD: password
-    MYSQL_DB: flaskdb      
-    SECRET_KEY: supersecretkey
+    MYSQL_PASSWORD: ${MY_SQL_ROOT_PASSWORD}
+    MYSQL_DB: ${MY_SQL_DATABASE}      
+    SECRET_KEY: ${SECRET_KEY}
   volumes:
       - .:/app
 
