@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Flask Auth</a>
+        <div class="navbar-nav ms-auto">
+            <span class="nav-link text-light">Welcome, {{ username }}!</span>
+            <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            <div class="card">
+                <div class="card-body">
+                    <h2>Welcome to Your Dashboard</h2>
+                    <p>You are logged in as <strong>{{ username }}</strong></p>
+                    <p>This is a protected page that only logged-in users can access.</p>
+                    
+                    <div class="mt-4">
+                        <h4>Your Account Details:</h4>
+                        <ul class="list-group">
+                            <li class="list-group-item">Username: {{ username }}</li>
+                            <li class="list-group-item">Status: Active</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
