@@ -41,7 +41,7 @@ services:
     image: mysql:latest
     container_name: mysql_db
 
-    restart: unless-stopped
+    restart: always
 
     env_file:
       - .env
