@@ -3,7 +3,7 @@ services:
     image: jenkins/jenkins:lts
 
     container_name: jenkins
-    
+
     user: "1000:1000"
 
     ports:
@@ -12,7 +12,7 @@ services:
     volumes:
       - jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
-      - /home/ec2-user/flask-sql-docker:/app
+      - /opt/flask-sql-docker:/app
 
 volumes:
   jenkins_home:
