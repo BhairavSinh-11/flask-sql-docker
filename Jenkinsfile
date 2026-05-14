@@ -3,28 +3,21 @@ pipeline {
 
     stages {
 
-        stage('Pull Code') {
+        stage('Deploy') {
             steps {
-                git branch: 'main',
-                url: 'https://github.com/BhairavSinh-11/flask-sql-docker.git'
-            }
-        }
 
-        stage('Stop Old Containers') {
-            steps {
-                sh 'docker-compose down'
-            }
-        }
+                dir('/app') {
 
-        stage('Build Containers') {
-            steps {
-                sh 'DOCKER_BUILDKIT=0 docker-compose build'
-            }
-        }
+                    sh 'git pull'
 
-        stage('Start Containers') {
-            steps {
-                sh 'docker-compose up -d'
+                    sh 'docker-compose down'
+
+                    sh 'DOCKER_BUILDKIT=0 docker-compose build'
+
+                    sh 'docker-compose up -d'
+
+                }
+
             }
         }
 
