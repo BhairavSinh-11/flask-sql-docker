@@ -3,6 +3,8 @@ services:
     image: jenkins/jenkins:lts
 
     container_name: jenkins
+    
+    user: "1000:1000"
 
     ports:
       - "8080:8080"
