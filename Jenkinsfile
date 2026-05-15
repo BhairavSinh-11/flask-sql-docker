@@ -22,7 +22,7 @@ pipeline {
 
         stage('Initialize Database') {
             steps {
-                
+                dir('/app'){
                     sh '''
                         export $(cat .env | xargs)
 
@@ -31,9 +31,9 @@ pipeline {
                         docker exec -i mysql_db mysql \
                             -u root \
                             -p${MYSQL_ROOT_PASSWORD} \
-                            ${MYSQL_DATABASE} < $WORKSPACE/schema.sql
+                            ${MYSQL_DATABASE} < schema.sql
                     '''
-                
+                }
             }
         }
     }
