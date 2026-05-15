@@ -19,7 +19,8 @@ pipeline {
                 }
             }
         }
-
+        
+        // use this if db is not initialized by the application itself, otherwise it will throw an error because the db is already initialized
         // stage('Initialize Database') {
         //     steps {
         //          withCredentials([file(credentialsId: 'jenkins-env-file', variable: 'ENV_FILE_PATH')]) {

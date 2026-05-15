@@ -47,6 +47,7 @@ services:
       - .env
 
     environment:
+   # use only root user for simplicity, you can create a separate user if needed
       # MYSQL_USER: ${MYSQL_USER}
       # MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
