@@ -31,7 +31,7 @@ A production-style Flask Authentication system fully containerized using Docker 
 
 ---
 
-        ⚙️ Docker Architecture
+        ##⚙️ Docker Architecture
                 ┌─────────────┐
                 │   Jenkins   │
                 └──────┬──────┘
@@ -44,7 +44,7 @@ A production-style Flask Authentication system fully containerized using Docker 
 
 
 
-🔄 CI/CD Workflow
+##🔄 CI/CD Workflow
 
 GitHub Push
      ↓
@@ -57,7 +57,7 @@ Docker Build & Deploy
 Live Application 🚀
 
 
-🔧 Jenkins CI/CD Setup
+##🔧 Jenkins CI/CD Setup
 
 Features
 Automatic Deployment on Git Push
@@ -66,7 +66,7 @@ Docker Compose Build & Deployment
 Secret .env Management using Jenkins Credentials
 
 
-🐳 Running Locally
+##🐳 Running Locally
 
 1 Clone Repository
 
@@ -109,7 +109,7 @@ Secret .env Management using Jenkins Credentials
 8. For jenkins-github pipeline you need to enable webhook in Github 
 
 
-🧠 What I Learned
+##🧠 What I Learned
 
 Through this project I learned:
 
