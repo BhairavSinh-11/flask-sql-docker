@@ -30,9 +30,9 @@ services:
 
     environment:
       MYSQL_HOST: mysql_db
-      MYSQL_USER: root
-      MYSQL_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DB: ${MY_SQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DB: ${MYSQL_DATABASE}
       SECRET_KEY: ${SECRET_KEY}
 
    #MYSQL SERVICE
@@ -47,8 +47,10 @@ services:
       - .env
 
     environment:
+      MYSQL_USER: ${MY_SQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MY_SQL_DATABASE}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
 
     ports:
       - "3306:3306"
@@ -58,7 +60,7 @@ services:
       - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
 
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p$$MY_SQL_ROOT_PASSWORD"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p$$MYSQL_ROOT_PASSWORD"]
       interval: 10s
       timeout: 5s
       retries: 10

@@ -29,9 +29,9 @@ pipeline {
                         sleep 20
 
                         docker exec -i mysql_db mysql \
-                            -u root \
-                            -p${MYSQL_ROOT_PASSWORD} \
-                            ${MY_SQL_DATABASE} \
+                            -u${MYSQL_USER} \
+                            -p${MYSQL_PASSWORD} \
+                            ${MYSQL_DATABASE} \
                             < schema.sql
                     '''
                 }
