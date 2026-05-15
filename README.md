@@ -42,9 +42,7 @@ A production-style Flask Authentication system fully containerized using Docker 
                 GitHub Webhook
                        │
                        ▼
-┌──────────┐    ┌──────────┐    ┌──────────┐
 │  Nginx   │──▶│ Flask App │──▶│  MySQL   │
-└──────────┘    └──────────┘    └──────────┘
 
 
 🔄 CI/CD Workflow
