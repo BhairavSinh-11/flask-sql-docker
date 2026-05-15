@@ -23,9 +23,11 @@ pipeline {
                 dir('/app') {
                     sh '''
 
-                        export $(cat .env | xargs)
+                        set -a
+                        source .env
+                        set +a
                         
-                        sleep 20
+                        sleep 15
 
                         docker exec -i mysql_db mysql \
                             -u root \
