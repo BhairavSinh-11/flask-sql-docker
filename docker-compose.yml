@@ -31,7 +31,7 @@ services:
     environment:
       MYSQL_HOST: mysql_db
       MYSQL_USER: root
-      MYSQL_PASSWORD: ${MY_SQL_ROOT_PASSWORD}
+      MYSQL_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DB: ${MY_SQL_DATABASE}
       SECRET_KEY: ${SECRET_KEY}
 
@@ -47,7 +47,7 @@ services:
       - .env
 
     environment:
-      MYSQL_ROOT_PASSWORD: ${MY_SQL_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MY_SQL_DATABASE}
 
     ports:
