@@ -22,17 +22,23 @@ pipeline {
 
         stage('Initialize Database') {
             steps {
+                 withCredentials([file(credentialsId: 'jenkins-env-file', variable: 'ENV_FILE_PATH')]) {
                 dir('/app'){
                     sh '''
+                        # Load environment variables from .env file
+                        cp $ENV_FILE_PATH .env
+                        sed -i 's/\r$//' .env 
+
                         export $(cat .env | xargs)
 
-                        sleep 20
+                        sleep 15
 
                         docker exec -i mysql_db mysql \
                             -u root \
                             -p${MYSQL_ROOT_PASSWORD} \
                             ${MYSQL_DATABASE} < schema.sql
                     '''
+                 }
                 }
             }
         }
