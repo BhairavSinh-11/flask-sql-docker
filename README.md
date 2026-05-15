@@ -1,4 +1,4 @@
-# 🚀 Flask Authentication App with DevOps CI/CD
+# 🚀 End-to-End DevOps CI/CD Pipeline using Flask, Docker & Jenkins
 
 A production-style Flask Authentication system fully containerized using Docker and deployed on AWS EC2 with automated CI/CD using Jenkins & GitHub Webhooks.
 
