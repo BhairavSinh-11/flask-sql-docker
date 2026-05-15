@@ -10,7 +10,7 @@ pipeline {
 
                         cp $ENV_FILE_PATH .env
 
-                        docker-compose --env-file .env down
+                        docker-compose --env-file .env down -v 
 
                         DOCKER_BUILDKIT=0 docker-compose --env-file .env build
                         
