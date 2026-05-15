@@ -24,7 +24,7 @@ pipeline {
                     sh '''
 
                         set -a
-                        source .env
+                        . .env
                         set +a
                         
                         sleep 15
