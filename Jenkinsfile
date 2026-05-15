@@ -31,7 +31,7 @@ pipeline {
                         docker exec -i mysql_db mysql \
                             -u root \
                             -p${MYSQL_ROOT_PASSWORD} \
-                            ${MYSQL_DATABASE} < schema.sql
+                            ${MYSQL_DATABASE} < $WORKSPACE/schema.sql
                     '''
                 
             }
