@@ -7,7 +7,7 @@ pipeline {
                 withCredentials([file(credentialsId: 'jenkins-env-file', variable: 'ENV_FILE_PATH')]) {
                     sh '''
                         # Copy secret file to .env
-                        
+
                         cp $ENV_FILE_PATH .env
                         docker-compose --env-file .env down
                         DOCKER_BUILDKIT=0 docker-compose --env-file .env build
@@ -21,12 +21,7 @@ pipeline {
             steps {
                 dir('/app') {
                     sh '''
-                        cp /var/jenkins_home/workspace/flask_CICD/.env .env 2>/dev/null || cp $ENV_FILE_PATH .env
-
-                        
-                        set -a
-                        source .env
-                        set +a
+                        export $(cat .env | xargs)
 
                         sleep 20
 
