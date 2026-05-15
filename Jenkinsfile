@@ -23,15 +23,9 @@ pipeline {
 
         stage('Initialize Database') {
             steps {
-
-                withCredentials([file(credentialsId: 'jenkins-env-file', variable: 'ENV_FILE_PATH')]) {
-
                     sh '''
-                        cp $ENV_FILE_PATH .env
+                    export $(cat .env | xargs)
 
-                        set -a
-                        . ./.env
-                        set +a
 
                         sleep 15
 
