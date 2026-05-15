@@ -9,8 +9,11 @@ pipeline {
                         # Copy secret file to .env
 
                         cp $ENV_FILE_PATH .env
+
                         docker-compose --env-file .env down
+
                         DOCKER_BUILDKIT=0 docker-compose --env-file .env build
+                        
                         docker-compose --env-file .env up -d
                     '''
                 }
