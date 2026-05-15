@@ -10,7 +10,7 @@ pipeline {
 
                         cp $ENV_FILE_PATH .env
 
-                        docker-compose --env-file .env down  
+                        docker-compose --env-file .env down 
 
                         DOCKER_BUILDKIT=0 docker-compose --env-file .env build
                         
@@ -31,8 +31,7 @@ pipeline {
                         docker exec -i mysql_db mysql \
                             -u root \
                             -p${MYSQL_ROOT_PASSWORD} \
-                            ${MYSQL_DATABASE} \
-                            < schema.sql
+                            ${MYSQL_DATABASE} < schema.sql
                     '''
                 
             }
