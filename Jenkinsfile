@@ -2,11 +2,8 @@ pipeline {
     agent any
 
     stages {
-
         stage('Deploy') {
-
             steps {
-
                sh '''
                 docker-compose --env-file .env down
 
@@ -17,8 +14,8 @@ pipeline {
             }
         }
 
-    }
-    stage('Initialize Database') {
+        // The 'Initialize Database' stage must be INSIDE the 'stages' block
+        stage('Initialize Database') {
             steps {
                 dir('/app') {
                     sh '''
@@ -35,4 +32,5 @@ pipeline {
                 }
             }
         }
-    }
+    } // Close 'stages' HERE, after all stages are done
+}
