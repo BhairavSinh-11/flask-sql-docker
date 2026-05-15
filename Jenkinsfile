@@ -18,17 +18,6 @@ pipeline {
         }
 
     }
-
-        stage('Deploy') {
-            steps {
-                dir('/app') {
-                    sh 'docker-compose --env-file .env down'
-                    sh 'DOCKER_BUILDKIT=0 docker-compose --env-file .env build'
-                    sh 'docker-compose --env-file .env up -d'
-                }
-            }
-        }
-
         stage('Initialize Database') {
             steps {
                 dir('/app') {
