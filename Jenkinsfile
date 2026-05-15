@@ -22,7 +22,7 @@ pipeline {
 
         stage('Initialize Database') {
             steps {
-                dir('/app') {
+                
                     sh '''
                         export $(cat .env | xargs)
 
@@ -34,7 +34,7 @@ pipeline {
                             ${MYSQL_DATABASE} \
                             < schema.sql
                     '''
-                }
+                
             }
         }
     }
