@@ -7,9 +7,7 @@ pipeline {
 
             steps {
 
-                sh '''
-                cd /var/jenkins_home/workspace/flask_sql_docker
-
+               sh '''
                 docker-compose --env-file .env down
 
                 DOCKER_BUILDKIT=0 docker-compose --env-file .env build
