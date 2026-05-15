@@ -2,16 +2,19 @@ pipeline {
     agent any
 
     stages {
+
         stage('Deploy') {
             steps {
-                // Bind the secret file from Jenkins credentials
+
                 withCredentials([file(credentialsId: 'jenkins-env-file', variable: 'ENV_FILE_PATH')]) {
+
                     sh '''
-                        # Copy the secret file to .env in the current directory
                         cp $ENV_FILE_PATH .env
 
                         docker-compose --env-file .env down
+
                         DOCKER_BUILDKIT=0 docker-compose --env-file .env build
+
                         docker-compose --env-file .env up -d
                     '''
                 }
@@ -20,13 +23,16 @@ pipeline {
 
         stage('Initialize Database') {
             steps {
-                dir('/app') {
+
+                withCredentials([file(credentialsId: 'jenkins-env-file', variable: 'ENV_FILE_PATH')]) {
+
                     sh '''
+                        cp $ENV_FILE_PATH .env
 
                         set -a
-                        . .env
+                        . ./.env
                         set +a
-                        
+
                         sleep 15
 
                         docker exec -i mysql_db mysql \
