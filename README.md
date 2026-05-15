@@ -32,8 +32,6 @@ A production-style Flask Authentication system fully containerized using Docker 
 ---
 
         ⚙️ Docker Architecture
-
-
                 ┌─────────────┐
                 │   Jenkins   │
                 └──────┬──────┘
