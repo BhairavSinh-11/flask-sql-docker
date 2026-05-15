@@ -18,7 +18,7 @@ pipeline {
         }
 
     }
-        stage('Initialize Database') {
+    stage('Initialize Database') {
             steps {
                 dir('/app') {
                     sh '''
